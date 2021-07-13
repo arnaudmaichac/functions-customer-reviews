@@ -48,7 +48,7 @@ namespace ContentModeratorFunction
             EmitCustomTelemetry(containsCat, passesText);
         }
 
-        private async Task<(bool, string)> PassesImageModerationAsync(Stream image)
+        internal async Task<(bool, string)> PassesImageModerationAsync(Stream image)
         {
             var client = new ComputerVisionClient(
                 new ApiKeyServiceClientCredentials(ApiKey),
@@ -66,7 +66,7 @@ namespace ContentModeratorFunction
             return (containsCat, message);
         }
 
-        private async Task<bool> PassesTextModeratorAsync(dynamic document)
+        internal async Task<bool> PassesTextModeratorAsync(dynamic document)
         {
             if (document.ReviewText == null)
             {
